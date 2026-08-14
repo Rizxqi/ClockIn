@@ -126,6 +126,10 @@ class CompanyResource extends Resource
     {
         $user = Auth::user();
         
+        if ($user && $user->role === 'super_admin') {
+            return parent::getEloquentQuery();
+        }
+        
         return parent::getEloquentQuery()
             ->where('id', $user->company_id ?? 0);
     }

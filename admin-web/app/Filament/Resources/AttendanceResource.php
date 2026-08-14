@@ -236,6 +236,10 @@ class AttendanceResource extends Resource
     {
         $user = Auth::user();
 
+        if ($user && $user->role === 'super_admin') {
+            return parent::getEloquentQuery()->with(['user', 'company', 'validator']);
+        }
+
         return parent::getEloquentQuery()
             ->where('company_id', $user->company_id ?? 0)
             ->with(['user', 'company', 'validator']);

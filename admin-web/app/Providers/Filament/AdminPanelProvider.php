@@ -9,6 +9,7 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -29,8 +30,13 @@ class AdminPanelProvider extends PanelProvider
             ->login(\App\Filament\Pages\Auth\Login::class)
             ->authGuard('web')
             ->favicon(asset('logo_web.png'))
+            ->brandLogo(asset('logo_web.png'))
+            ->brandLogoHeight('3rem')
             ->brandName('ClockIn Admin')
             ->darkMode(true)
+            ->sidebarCollapsibleOnDesktop()
+            ->maxContentWidth(MaxWidth::Full)
+            ->font('Inter')
             ->colors([
                 'primary' => [
                     50 => '#f0fdf4',
@@ -44,6 +50,19 @@ class AdminPanelProvider extends PanelProvider
                     800 => '#166534',
                     900 => '#14532d',
                     950 => '#052e16',
+                ],
+                'gray' => [
+                    50 => '#f8fafc',
+                    100 => '#f1f5f9',
+                    200 => '#e2e8f0',
+                    300 => '#cbd5e1',
+                    400 => '#94a3b8',
+                    500 => '#64748b',
+                    600 => '#475569',
+                    700 => '#334155',
+                    800 => '#2d3e5f',
+                    900 => '#1e293b',
+                    950 => '#0f172a',
                 ],
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

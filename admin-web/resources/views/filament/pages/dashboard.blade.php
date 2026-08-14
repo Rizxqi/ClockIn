@@ -76,7 +76,7 @@
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Attendance Report</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400">Weekly overview</p>
                     </div>
-                    <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">
+                    <a href="{{ \App\Filament\Resources\AttendanceResource::getUrl('index') }}" class="text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">
                         View Details →
                     </a>
                 </div>
@@ -179,7 +179,7 @@
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Latest Check-ins</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400">Recent attendance</p>
                     </div>
-                    <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">
+                    <a href="{{ \App\Filament\Resources\AttendanceResource::getUrl('index') }}" class="text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">
                         View All →
                     </a>
                 </div>
@@ -275,28 +275,28 @@
                 class="rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 p-6 dark:from-gray-800 dark:to-gray-900 border border-blue-100 dark:border-gray-700">
                 <h3 class="mb-4 text-base font-semibold text-gray-900 dark:text-white">Quick Actions</h3>
                 <div class="space-y-2.5">
-                    <a href="#"
+                    <a href="{{ \App\Filament\Resources\UserResource::getUrl('create') }}"
                         class="flex items-center gap-3 rounded-lg bg-white p-3.5 transition-all hover:shadow-md hover:scale-[1.02] dark:bg-gray-800">
                         <div class="rounded-lg bg-blue-100 p-2 dark:bg-blue-900">
                             <x-heroicon-o-user-plus class="h-4 w-4 text-blue-600 dark:text-blue-400" />
                         </div>
                         <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Add Employee</span>
                     </a>
-                    <a href="#"
+                    <a href="{{ \App\Filament\Resources\LeaveRequestResource::getUrl('index') }}"
                         class="flex items-center gap-3 rounded-lg bg-white p-3.5 transition-all hover:shadow-md hover:scale-[1.02] dark:bg-gray-800">
                         <div class="rounded-lg bg-green-100 p-2 dark:bg-green-900">
                             <x-heroicon-o-document-check class="h-4 w-4 text-green-600 dark:text-green-400" />
                         </div>
                         <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Approve Leaves</span>
                     </a>
-                    <a href="#"
+                    <a href="{{ \App\Filament\Resources\AttendanceResource::getUrl('index') }}"
                         class="flex items-center gap-3 rounded-lg bg-white p-3.5 transition-all hover:shadow-md hover:scale-[1.02] dark:bg-gray-800">
                         <div class="rounded-lg bg-purple-100 p-2 dark:bg-purple-900">
                             <x-heroicon-o-chart-bar class="h-4 w-4 text-purple-600 dark:text-purple-400" />
                         </div>
                         <span class="text-sm font-medium text-gray-700 dark:text-gray-300">View Reports</span>
                     </a>
-                    <a href="#"
+                    <a href="{{ \App\Filament\Resources\CompanyResource::getUrl('index') }}"
                         class="flex items-center gap-3 rounded-lg bg-white p-3.5 transition-all hover:shadow-md hover:scale-[1.02] dark:bg-gray-800">
                         <div class="rounded-lg bg-amber-100 p-2 dark:bg-amber-900">
                             <x-heroicon-o-cog-6-tooth class="h-4 w-4 text-amber-600 dark:text-amber-400" />

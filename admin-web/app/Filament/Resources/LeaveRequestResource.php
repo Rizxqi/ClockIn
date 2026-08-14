@@ -90,6 +90,10 @@ class LeaveRequestResource extends Resource
     {
         $user = Auth::user();
 
+        if ($user && $user->role === 'super_admin') {
+            return parent::getEloquentQuery()->with(['user', 'approver']);
+        }
+
         return parent::getEloquentQuery()
             ->where('company_id', $user->company_id ?? 0)
             ->with(['user', 'approver']);

@@ -274,6 +274,10 @@ class UserResource extends Resource implements
     {
         $user = Auth::user();
 
+        if ($user && $user->role === 'super_admin') {
+            return parent::getEloquentQuery();
+        }
+
         return parent::getEloquentQuery()
             ->where('company_id', $user->company_id ?? 0);
     }

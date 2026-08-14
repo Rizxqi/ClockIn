@@ -2,67 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ClockIn Custom Theme for Filament */
-.dark {
-    /* Background Colors */
-    --gray-950: 30, 41, 59; /* clockin-dark #1E293B */
-    --gray-900: 45, 62, 95; /* clockin-blue #2D3E5F */
-    --gray-800: 51, 65, 85;
-    --gray-700: 71, 85, 105;
-    
-    /* Primary Green Colors */
-    --primary-50: 240, 253, 244;
-    --primary-100: 220, 252, 231;
-    --primary-200: 187, 247, 208;
-    --primary-300: 134, 239, 172;
-    --primary-400: 74, 222, 128; /* clockin-green #4ADE80 */
-    --primary-500: 34, 197, 94; /* clockin-green-dark #22C55E */
-    --primary-600: 22, 163, 74;
-    --primary-700: 21, 128, 61;
-    --primary-800: 22, 101, 52;
-    --primary-900: 20, 83, 45;
+/* ClockIn Minimalist Custom Theme */
+
+/* Aesthetic scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
 
-/* Sidebar Gradient Background */
-.fi-sidebar {
-    background: linear-gradient(180deg, #2D3E5F 0%, #1E293B 100%);
+::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-/* Active Sidebar Item */
-.fi-sidebar-item-button[aria-current="page"] {
-    background-color: rgba(74, 222, 128, 0.1);
-    border-left: 3px solid #4ADE80;
+::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.3);
+    border-radius: 4px;
 }
 
-/* Hover Sidebar Item */
-.fi-sidebar-item-button:hover {
-    background-color: rgba(74, 222, 128, 0.05);
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(71, 85, 105, 0.6);
 }
 
-/* Topbar */
+/* Ensure smooth transitions for UI elements */
+.fi-sidebar-item-button, 
+.fi-btn,
+.fi-icon-btn,
+a {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Optional: Slight blur for sticky headers if they exist, giving a glassmorphism feel */
 .fi-topbar {
-    background-color: #1E293B;
-    border-bottom-color: rgba(74, 222, 128, 0.1);
+    backdrop-filter: blur(8px);
+    background-color: rgba(30, 41, 59, 0.8) !important; /* using clockin-dark with opacity */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Main Content Background */
-.fi-main {
-    background-color: #1E293B;
+/* KEEP LOGO FIXED AND DISPLAYED WHEN FOLDED */
+.fi-sidebar-header .fi-logo,
+.fi-sidebar-header .fi-logo a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-/* Section/Card Backgrounds */
-.fi-section,
-.fi-card {
-    background-color: #2D3E5F;
-    border-color: rgba(74, 222, 128, 0.1);
+.fi-sidebar-header .fi-logo img {
+    display: block !important;
+    max-height: 40px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    transition: all 0.3s ease;
 }
 
-/* Table Header */
-.fi-ta-header-cell {
-    background-color: rgba(74, 222, 128, 0.05);
+/* When collapsed, let the logo shrink so it fits in the small sidebar */
+.fi-sidebar-is-collapsed .fi-logo img,
+.fi-sidebar[data-collapsed] .fi-logo img,
+aside[class*="w-"] .fi-logo img {
+    /* Optional: scale down smoothly */
 }
 
-/* Table Row Hover */
-.fi-ta-row:hover {
-    background-color: rgba(74, 222, 128, 0.03);
+/* POSITION SIDEBAR COLLAPSE ARROW AT THE MIDDLE */
+.fi-sidebar {
+    overflow: visible !important;
 }
+.fi-sidebar-header {
+    overflow: visible !important;
+}
+
+/* Target the collapse button in the sidebar */
+.fi-sidebar button.fi-icon-btn[x-on\:click*="collapse"],
+.fi-sidebar-header button.fi-icon-btn {
+    position: absolute !important;
+    top: 50vh !important; /* Places it in the vertical middle of the screen */
+    right: -16px !important; /* Stick to the right edge of the sidebar */
+    left: auto !important; /* Clear any left positioning */
+    transform: translateY(-50%) !important;
+    z-index: 60 !important;
+    background-color: rgb(30, 41, 59) !important; 
+    border: 1px solid rgba(74, 222, 128, 0.4) !important; /* brand green border */
+    border-radius: 50% !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+    transition: right 0.3s ease-in-out !important;
+}
+
